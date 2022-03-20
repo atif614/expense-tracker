@@ -20,15 +20,21 @@ const ExpenseForm = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
 
-        //Creating Object
-        const expenseData = {
-            title: enteredTitle,
-            amount: enteredAmount,
-            date: new Date(enteredDate)
+        if (enteredTitle === '' || enteredAmount === '' || enteredDate === '') {
+            alert("All fields are mandatory");
         }
-        props.onSaveExpenseData(expenseData);
+        else {
 
-        console.log(expenseData);
+            //Creating Object
+            const expenseData = {
+                title: enteredTitle,
+                amount: enteredAmount,
+                date: new Date(enteredDate)
+            }
+            props.onSaveExpenseData(expenseData);
+        }
+
+        // console.log(expenseData);
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
